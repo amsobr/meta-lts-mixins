@@ -1,0 +1,22 @@
+"Mixin" layer for adding latest nodejs-18.x into the Yocto Project LTS.
+
+At the time Kirkstone was released in May 2022, nodejs v16 was the latest
+version and officially it's the only nodejs version supported by Kirkstone.
+Kirkstone will be supported until April 2026 but nodejs-16 is EOL as of October
+2023, making it unsuitable for projects during the lifetimg of Kirkstone.
+
+This mixin layer is meant to address this issue by backporting nodejs-18 and
+nodejs-20 versions from the mickledore and master branches of meta-openembedded,
+respectively.
+
+The actual versions of nodejs that are available can be found by inspecting the
+contents of recipes-devtools/nodejs.
+
+Including the layer automatically picks up the latest nodejs version; different
+versions must be set explicitly by adding the following line to your distro
+config or local.conf:
+
+NODE_VERSION = "20%"
+
+Maintainers:
+António Oliveira <antonio@amsobr.com>
